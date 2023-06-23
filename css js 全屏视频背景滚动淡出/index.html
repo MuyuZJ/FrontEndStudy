@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全屏视频滚动淡出效果展示</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <section>
+        <video src="./video/watch-result.mp4" autoplay muted loop></video>
+    </section>
+    <section>
+        <div class="content">
+            <h2>This is a title.</h2>
+            <p>但是文本的概念后来主要变成了：“任何由书写所固定下来的任何话语。”对语言学家来说，文本指的是作品的可见可感的表层结构，是一系列语句串联而成的连贯序列。文本可能只是一个单句，例如谚语、格言、招牌等，但比较普遍的是由一系列句子组成。文本和段落的区别在于，文本构成了一个相对封闭、自足的系统。前苏联符号学家洛特曼指出，文本是外观的，即用一定的符号来表示；它是有限的，既有头有尾；它有内部结构。罗兰·巴特文本一方面是能指，即实际的语言符号以及由它们所组成的词、句子和段落章节，另一方面是所指，即固定的确定的和单一的意思，为表达这种意思的正确性所限定。以上从技术上中性地对文本做出基本界定。</p>
+        </div>
+    </section>
+
+    <script>
+        let video = document.querySelector("video")
+        window.addEventListener("scroll", function  (e) {
+            video.style.opacity = 1 + window.scrollY / -(document.body.clientHeight / 2)
+        })
+    </script>
+</body>
+</html>

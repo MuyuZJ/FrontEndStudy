@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.container {
+    /*为了计算这里定义成变量形式 元素的宽高 遮罩的宽高 移动的位移*/
+    --width: 400px;
+    --height: 260px;
+    --puzzle-width: 80px;
+    --puzzle-height: 80px;
+    --move-pixel: 0px;
+
+
+    width: var(--width);
+    height: var(--height);
+    display: block;
+    border-radius: 5px;
+    background-image: url("../img/bg.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.container::before, .container::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: inherit;
+    height: inherit;
+    /*这里设置了和之前设置的一样的图片,因为完全一样所以看不出*/
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+    border-radius: inherit;
+    box-shadow: inherit;
+
+    /*设置遮罩物的位置 虽然没有搞懂*/
+    /*todo*/
+    clip-path: inset(
+            calc((var(--height) - var(--puzzle-height)) / 2) var(--puzzle-width) calc((var(--height) - var(--puzzle-height)) / 2) calc(var(--width) - var(--puzzle-width) * 2)
+    );
+    -webkit-clip-path: inset(
+            calc((var(--height) - var(--puzzle-height)) / 2) var(--puzzle-width) calc((var(--height) - var(--puzzle-height)) / 2) calc(var(--width) - var(--puzzle-width) * 2)
+    );
+}
+
+.container::after {
+    /*将元素移动到背景图左边 设置移动的范围*/
+    transform: translateX(
+            clamp(
+                    calc(var(--width) * -1),
+                    calc(var(--width) * -1 + var(--move-pixel)),
+                    calc(var(--puzzle-height))
+            )
+    );
+    transition: all 0.5s ease-in-out;
+}
+
+.container::before {
+    /*设置背景颜色和混色模式*/
+    background-color: #0007;
+    mix-blend-mode: multiply;
+}
+
+.handler {
+    width: calc(var(--width) + var(--puzzle-width) * 2);
+    height: 23px;
+    border-radius: 10px;
+    background-color: lightgray;
+    position: absolute;
+    bottom: -50px;
+    left: calc(var(--puzzle-width) * 2 * (-1));
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.handler span {
+    display: block;
+    width: var(--puzzle-width);
+    height: inherit;
+    border-radius: inherit;
+    background-color: papayawhip;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset 0 0 6px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    cursor: move;
+
+    /*移动部分 clamp这里依次为最小值,当前值,最大值*/
+    transform: translateX(
+            clamp(
+                    0px,
+                    var(--move-pixel),
+                    calc(var(--width) + var(--puzzle-width))
+            )
+    );
+
+    /*动画效果*/
+    transition: all 0.5s ease-in-out;
+}
+
+/*在鼠标按住的的时候没有动画效果*/
+.container:active .handler span {
+    transition: none;
+}
+
+.container:active::after {
+    transition: none;
+}

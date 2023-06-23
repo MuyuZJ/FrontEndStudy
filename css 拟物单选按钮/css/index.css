@@ -1,0 +1,74 @@
+/*
+    @Time       : 2021/6/2 13:22 
+    @Author     : MYH            
+    @File       : ${NAME}.css
+    @Software   : WebStorm
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "微软雅黑", sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color:#1c4765;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    user-select: none;
+}
+
+.container p {
+    color: aquamarine;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.container label {
+    position: relative;
+    cursor: pointer;
+}
+
+.container label input {
+    appearance: none; /* 所有主流浏览器都不支持 */
+    -webkit-appearance: none;
+}
+
+.container label .iconfont {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: #1c4765;
+    line-height: 40px;
+    margin: 0 4px;
+    color: #6f6f6f;
+    font-size: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    box-shadow: -1px -1px 3px rgba(255, 255, 255, .2), 2px 2px 6px rgba(0, 0, 0, 0.8);
+    filter: blur(0.5px);
+}
+
+.container label .iconfont:hover {
+    box-shadow: -1px -1px 3px rgba(255, 255, 255, .1), 2px 2px 6px rgba(0, 0, 0, 0.8),
+    inset -2px -2px 5px 10px rgba(255, 255, 255, 0.05), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.container label input:checked ~ .iconfont{
+    box-shadow: -1px -1px 3px rgba(255, 255, 255, .1), 2px 2px 6px rgba(0, 0, 0, 0.8),
+    inset -2px -2px 5px 10px rgba(255, 255, 255, 0.05), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 0 5px skyblue;
+    color: deepskyblue;
+}

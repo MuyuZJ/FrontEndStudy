@@ -1,0 +1,31 @@
+<!-- 
+    @Time       : 2021/6/19 18:47 
+    @Author     : MYH            
+    @File       : index1.html
+    @Software   : WebStorm
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>svg转换网页特效</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="banner">
+    <video src="video/video.mp4" muted autoplay loop></video>
+    <div id="bg"></div>
+</div>
+
+<script>
+    let bg = document.getElementById("bg");
+    bg.style.backgroundSize = 100 + "px";
+    window.addEventListener("scroll", function () {
+        let value = window.scrollY;
+        bg.style.backgroundSize = 100 + value*2 + "px";
+    })
+</script>
+</body>
+</html>
+

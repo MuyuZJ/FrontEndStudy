@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拼图验证码</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="container" id="con">
+    <!-- handler用于制作导航条 span用于js获取位置 伪元素不能被监听js事件-->
+    <div class="handler" id="han">
+        <span id="btn"></span>
+    </div>
+</div>
+<script>
+    // 定义常量和变量
+    const con = document.getElementById("con");
+    const han = document.getElementById("han");
+    const btn = document.getElementById("btn");
+    let should_move = false;        // 设置当前是否为正在移动状态
+
+    // 监听事件 发现一个问题: 如果超出btn区域(条子外)则会无法监听  这时候将监听改为window即可解决问题
+    btn.addEventListener("mousedown", function (e) {
+            should_move = true;
+        }
+    );
+
+    window.addEventListener("mousemove", function (e) {
+
+            if (should_move) {
+                let offsetLeft = han.getBoundingClientRect().left;
+                let buttonWidth = btn.getBoundingClientRect().width;
+                // 设置对应元素的属性
+                con.style.setProperty('--move-pixel', `${e.clientX - offsetLeft - buttonWidth / 2}px`)
+            }
+        }
+    );
+
+    window.addEventListener("mouseup", function (e) {
+
+        // 移动完成 这里编写判断是否验证成功的逻辑
+        if (should_move) {
+            should_move = false;
+            const finalOffset = e.clientX - han.getBoundingClientRect().left;
+            // console.log(finalOffset)     // 测试
+
+            // 判断逻辑
+            if (finalOffset > 440 && finalOffset < 460) {
+                // console.log("pass");     // 测试
+                alert("Pass");
+            } else {
+                console.log("fail");
+                // 设置btn移动到最前面
+                con.style.setProperty('--move-pixel', `${0}px`)
+            }
+        }
+    });
+</script>
+</body>
+</html>

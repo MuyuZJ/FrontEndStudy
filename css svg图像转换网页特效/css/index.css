@@ -1,0 +1,55 @@
+/*
+    @Time       : 2021/6/19 18:48 
+    @Author     : MYH            
+    @File       : ${NAME}.css
+    @Software   : WebStorm
+*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "微软雅黑", sans-serif;
+}
+
+html, body{
+    width: 100vw;
+    height: 100vh;
+}
+
+body{
+    min-height: 2600px;
+}
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+.banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.banner video{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner #bg{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff url("../svg/heart.svg") no-repeat center;
+    mix-blend-mode: screen;
+}
+

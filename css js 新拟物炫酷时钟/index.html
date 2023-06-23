@@ -1,0 +1,52 @@
+<!-- 
+    @Time       : 2021/6/21 3:01 
+    @Author     : MYH            
+    @File       : index1.html
+    @Software   : WebStorm
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新拟物炫酷时钟</title>
+    <link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+<div class="clock">
+    <div class="hour">
+        <div class="hr" id="hr"></div>
+    </div>
+    <div class="min">
+        <div class="mn" id="mn"></div>
+    </div>
+    <div class="sec">
+        <div class="sc" id="sc"></div>
+    </div>
+</div>
+
+<script>
+    setInterval(() => {
+        // 找寻对应的元素
+        const hr = document.querySelector("#hr");
+        const mn = document.querySelector("#mn");
+        const sc = document.querySelector("#sc");
+
+        // 获得时间
+        let day = new Date();
+
+        // 计算每一个指针需要转的角度
+        let hh = day.getHours() * 30;
+        let mm = day.getMinutes() * 6;
+        let ss = day.getSeconds() * 6;
+
+        // 设置
+        hr.style.transform = `rotateZ(${hh + (mm / 12)}deg)`
+        mn.style.transform = `rotateZ(${mm}deg)`
+        sc.style.transform = `rotateZ(${ss}deg)`
+    }, 1000)
+
+</script>
+
+</body>
+</html>

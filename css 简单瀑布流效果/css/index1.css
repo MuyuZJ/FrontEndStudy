@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    margin: 4px;
+}
+
+.container {
+    /*表示内容分为4列 内容之间没有空隙*/
+    column-count: 4;
+    column-gap: 0;
+}
+
+.item {
+    padding: 2px 2px;
+    position: relative;
+    counter-increment: item-counter;
+}
+
+.item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 4px;
+}
+
+.item::after {
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 24px;
+    top: 3px;
+    left: 3px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 24px;
+    content: counter(item-counter);
+}

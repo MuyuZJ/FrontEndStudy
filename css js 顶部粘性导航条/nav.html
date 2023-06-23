@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nav</title>
+    <link rel="stylesheet" href="css/nav.css">
+</head>
+<body>
+<header>
+    <a href="#" class="logo">Logo</a>
+    <ul>
+        <li>
+            <a href="#">
+                index
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                about
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                service
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                works
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                contact
+            </a>
+        </li>
+    </ul>
+</header>
+<section class="banner">
+
+</section>
+
+<script>
+    window.addEventListener('scroll', function () {
+        let header = document.querySelector('header');
+        header.classList.toggle('sticky', window.scrollY > 0)
+    })
+</script>
+</body>
+</html>

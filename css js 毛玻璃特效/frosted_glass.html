@@ -1,0 +1,33 @@
+<!-- 
+    @Time       : 2021/6/2 10:49 
+    @Author     : MYH            
+    @File       : frosted_glass.html 
+    @Software   : WebStorm
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>毛玻璃特效</title>
+    <link rel="stylesheet" href="css/frosted_glass.css">
+</head>
+<body>
+
+<section>
+
+    <h2>Frosted Glass</h2>
+    <div class="glass"></div>
+</section>
+
+
+<script>
+
+    document.addEventListener('mousemove', function (e) {
+        const glass = document.querySelector(".glass");
+        glass.style.left = e.offsetX + 'px';
+        glass.style.top = e.offsetY + 'px';
+    })
+</script>
+</body>
+</html>

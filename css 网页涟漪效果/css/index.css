@@ -1,0 +1,68 @@
+/*
+    @Time       : 2021/6/2 12:17 
+    @Author     : MYH            
+    @File       : ${NAME}.css
+    @Software   : WebStorm
+*/
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: black;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.container .box {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.container .box span {
+    position: absolute;
+    box-sizing: border-box;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    animation: flows 5s linear infinite;
+    animation-delay: calc(0.5s * var(--i));
+    opacity: 0;
+}
+
+.container .box:nth-child(2) span{
+    border: none;
+    background-color: rgba(30,30,255,0.3);
+}
+
+@keyframes flows {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        width: 500px;
+        height: 500px;
+        opacity: 0;
+    }
+}
+
